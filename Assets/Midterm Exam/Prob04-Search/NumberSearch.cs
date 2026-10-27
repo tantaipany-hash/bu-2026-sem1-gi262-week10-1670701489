@@ -17,8 +17,22 @@ namespace MidtermExam.Prob04
         /// </remarks>
         public int AS04_SequentialSearch(int[] values, int target)
         {
-            // TODO: เขียนคำตอบแทนคำสั่ง throw ด้านล่าง
-            throw new NotImplementedException();
+           AS05_BinarySearch(values, target);
+            if (values == null || values.Length == 0)
+            {
+                return -1; // คืน -1 ถ้า input เป็น null หรือ array ว่าง
+            }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return i; // คืน index แรกที่พบ
+                }
+            }
+            return -1; // คืน -1 ถ้าไม่พบ target ใน array
+
+            Array.Sort(values); // เรียง array เพื่อใช้ Binary Search
+
         }
 
         /// <summary>ข้อ 04.2: ค้นหาตัวเลขด้วย Binary Search โดยลดช่วงค้นหาประมาณครึ่งหนึ่งต่อขั้น</summary>
@@ -36,7 +50,11 @@ namespace MidtermExam.Prob04
         /// ใช้เวลา O(log n) และเขียนคอมเมนต์อธิบายเหตุผลของเวลาที่ใช้เหนือคำตอบ
         /// </remarks>
         public int AS05_BinarySearch(int[] sortedValues, int target)
-        {
+        {    if (sortedValues == null || sortedValues.Length == 0)
+            {
+                return -1; // คืน -1 ถ้า input เป็น null หรือ array ว่าง
+            }                  
+        
             // TODO: เขียนคำตอบแทนคำสั่ง throw ด้านล่าง
             // 1. จัดการ input ที่เป็น null/ว่าง และกำหนดขอบเขต index ของช่วงค้นหา
             // 2. เลือก index ตรงกลางของช่วง แล้วเปรียบเทียบค่าตรงกลางกับ target
